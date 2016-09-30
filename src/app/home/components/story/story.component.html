@@ -1,0 +1,30 @@
+ <article  *ngIf="story">
+      <header>
+        <h1>{{story.title}}</h1>
+        <p>Author:
+          {{story.author.name}}
+        </p>
+        <p>Published:
+          <time pubdate datetime="2009-10-09">{{story.createdAt}}</time>
+        </p>
+      </header>
+      <p>{{story.body}}</p>
+
+      <section>
+        
+        <h2>Comments</h2>
+
+        <article *ngFor="let comment of story.comments" >
+          <header>
+            <h3>Posted by: {{comment.author.name}}</h3>
+            <p>
+              <time pubdate datetime="2009-10-10T19:10-08:00">~1 hour ago</time>
+            </p>
+          </header>
+          <p>{{comment.body}}</p>
+        </article>
+
+     
+      </section>
+
+    </article>

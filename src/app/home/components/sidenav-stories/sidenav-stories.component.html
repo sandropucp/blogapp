@@ -1,0 +1,6 @@
+<h2>Blogs</h2>
+<ul class="items">
+  <li *ngFor="let story of stories">
+    <a [routerLink]="['/stories',story._id]">{{story.title}}</a>
+  </li>
+</ul>

@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+        font: 24px Helvetica;
+        background:#a9a9a9;
+        color: rgba(0, 0, 0, .8);
+}
+
+#main {
+        min-height: 800px;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-flow: row;
+}
+
+#main>div {
+        margin: 4px;
+        padding: 5px;       
+        border-radius: 7pt;
+        background: #ffffff;
+        flex: 3 1 60%;
+        order: 2;
+}
+
+#main>nav {
+        margin: 4px;
+        padding: 5px;        
+        border-radius: 7pt;
+        background: #ffffff;
+        flex: 1 6 20%;
+        order: 1;
+}
+
+#main>aside {
+        margin: 4px;
+        padding: 5px;        
+        border-radius: 7pt;
+        background: #ffffff;
+        flex: 1 6 20%;
+        order: 3;
+}
+
+header,
+footer {
+        display: block;
+        margin: 4px;
+        padding: 5px;
+        min-height: 100px;
+        border-radius: 7pt;
+        background: #ffffff;
+}
+
+
+/* Too narrow to support three columns */
+
+@media all and (max-width: 640px) {
+        #main,
+        #page {
+                flex-flow: column;
+        }
+        #main>div,
+        #main>nav,
+        #main>aside {
+                /* Return them to document order */
+                order: 0;
+        }
+        #main>nav,
+        #main>aside,
+        header,
+        footer {
+                min-height: 50px;
+                max-height: 50px;
+        }
+}
