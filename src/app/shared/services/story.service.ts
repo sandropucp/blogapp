@@ -9,7 +9,7 @@ import { StoryModel } from '../models/story.model';
 const BASE_URL = 'https://blogapi-express.herokuapp.com/api/';
 
 @Injectable()
-export class StoriesService {
+export class StoryService {
 
   constructor(private http: Http) { }
   
