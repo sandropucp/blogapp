@@ -1,8 +1,19 @@
-<div id='main'>
-  <div>
-   <router-outlet></router-outlet>
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text">
+      Admin Page
+    </h3>
   </div>
-  <nav>
-   <app-sidenav-admin></app-sidenav-admin>
-  </nav>
+</section>
+<div class="space-70"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <app-sidenav-admin></app-sidenav-admin>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

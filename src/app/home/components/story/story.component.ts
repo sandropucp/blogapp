@@ -16,6 +16,7 @@ export class StoryComponent implements OnInit {
     private storyService: StoryService) { }
 
   ngOnInit() {
+    console.info('StoryComponent');
     this.route.params.forEach((params: Params) => {
       let id = params['id']; 
       console.info(id);

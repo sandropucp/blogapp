@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserModel } from '../../models/user.model';
@@ -10,17 +11,19 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./nav-main.component.css']
 })
 export class NavMainComponent implements OnInit {
-
   navbarCollapsed = true;
 
   user: UserModel;
   userEventsSubscription: Subscription;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
-    this.userEventsSubscription = this.userService.userEvents.subscribe(user => this.user = user);
+    this.userEventsSubscription = this.userService.userEvents
+      .subscribe(user => {
+        this.user = user;                
+      });
   }
 
   ngOnDestroy() {
@@ -33,4 +36,9 @@ export class NavMainComponent implements OnInit {
     this.navbarCollapsed = !this.navbarCollapsed;
   }
 
+  logout(event) {
+    event.preventDefault();
+    this.userService.logout();
+    this.router.navigate(['/']);
+  }
 }

@@ -18,33 +18,40 @@ export class UserService {
     this.retrieveUser();
   }
 
-  register(login, password, birthYear): Observable<UserModel> {
-    const body = { login, password, birthYear };
+  getUsers(): Observable<Array<UserModel>> {
+    return this.http.get(`${BASE_URL}users`)
+      .map(res => <Array<UserModel>>res.json());
+  }
+
+  register(name, email, password, birthYear): Observable<UserModel> {
+    const body = { name, email, password, birthYear };
     return this.http.post(`${BASE_URL}users`, body)
       .map(res => res.json());
   }
 
-  authenticate(login, password): Observable<UserModel> {
-    var user: UserModel;
-    user.email = login;
-    user.name = password;
-
+  authenticate(email, password): Observable<UserModel> {    
+    const body = { email, password };    
     return this.http
-      .post(`${BASE_URL}users/authentication`, user)
+      .post(`${BASE_URL}users/authentication`, body)
       .map(res => res.json())
       .do(user => this.storeLoggedInUser(user));
   }
 
-  storeLoggedInUser(user) {
+  storeLoggedInUser(user) {    
     window.localStorage.setItem('rememberMe', JSON.stringify(user));
     this.userEvents.next(user);
   }
 
-  retrieveUser() {
+  retrieveUser() {    
     const value = window.localStorage.getItem('rememberMe');
     if (value) {
       const user = JSON.parse(value);
       this.userEvents.next(user);
     }
+  }
+
+  logout() {
+    this.userEvents.next(null);
+    window.localStorage.removeItem('rememberMe');
   }
 }

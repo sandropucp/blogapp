@@ -1,7 +1,9 @@
-<ul>
-  <li>
-    <a [routerLink]="['/admin/users']">Users</a>
-    <a [routerLink]="['/admin/registeruser']">Register New User</a>
-    <a [routerLink]="['/admin/stories']">Stories</a>
-  </li>  
-</ul>
+<div class="sidebar-box">
+  <h4>Menu</h4>
+  <ul class="cat-list">
+    <li><a [routerLink]="['/admin/users']" data-toggle="tooltip" data-placement="right" title="" data-original-title="14" class="hover-color">Users</a></li>
+    <li><a [routerLink]="['/signup']" data-toggle="tooltip" data-placement="right" title="" data-original-title="14" class="hover-color">Create a new User</a></li>
+  </ul>
+</div>
+
+<div class="clearfix"></div>

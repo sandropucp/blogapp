@@ -17,6 +17,7 @@ import { UserService } from './shared/services/user.service';
 
 import { HomeModule } from './home/home.module';
 import { AdminModule } from './admin/admin.module';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AdminModule } from './admin/admin.module';
     AdminComponent,
     LoginComponent,
     NavMainComponent,
-    FooterComponent
+    FooterComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

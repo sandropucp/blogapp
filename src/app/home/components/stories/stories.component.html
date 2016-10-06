@@ -1,6 +1,19 @@
-<h2>Main Blogs</h2>
-<ul class="items">
-  <li *ngFor="let story of stories">
-    {{story.title}}
-  </li>
-</ul>
+<div class="blog-post-section" *ngFor="let story of stories">
+  <!--<div class="blog-post-img">
+    <img src="assets/images/blog/blog-1.jpg" class="img-responsive" alt="">
+  </div>-->
+  <div class="blog-post-header">
+    <h3><a [routerLink]="['/stories',story._id]" class="hover-color">{{story.title}}</a></h3>
+  </div>
+  <div class="blog-post-info">
+    <span><a href="#" class="hover-color">by {{story.author.name}}</a> | on {{story.createdAt | date}} | <a href="#" class="hover-color">{{story.comments.length}} comment</a></span>
+  </div>
+  <div class="blog-post-detail">
+    <p>
+      {{story.body}}
+    </p>  
+  </div>
+  <div class="blog-post-more text-right">
+    <a href="" class="btn theme-btn-default btn-lg">continue reading</a>
+  </div>
+</div>

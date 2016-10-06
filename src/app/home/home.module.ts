@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { SidenavStoriesComponent } from './components/sidenav-stories/sidenav-stories.component';
-import { SidenavTagsComponent } from './components/sidenav-tags/sidenav-tags.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { StoryComponent } from './components/story/story.component';
 
@@ -15,15 +14,13 @@ import { homeRouting } from './home.route';
         FormsModule,
         homeRouting
     ],
-    declarations: [
-        SidenavStoriesComponent,
-        SidenavTagsComponent,
+    declarations: [       
+        SidenavComponent,
         StoriesComponent,
         StoryComponent
     ],
-    exports: [
-        SidenavStoriesComponent,
-        SidenavTagsComponent,
+    exports: [        
+        SidenavComponent,
         StoriesComponent,
         StoryComponent
     ]

@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   //passwordForm: FormGroup;
 
   authenticationFailed = false;
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, 
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -35,13 +36,13 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate() {
-    // this.userService.authenticate(
-    //   this.userForm.value.login,
-    //   this.userForm.value.passwordForm.password
-    // ).subscribe(
-    //   () => this.router.navigate(['/']),
-    //   () => this.authenticationFailed = true
-    //   );
+    this.userService.authenticate(
+      this.userForm.value.login,
+      this.userForm.value.password
+    ).subscribe(
+      () => this.router.navigate(['/']),
+      () => this.authenticationFailed = true
+      );
   }
 
 }
