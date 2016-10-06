@@ -2,10 +2,7 @@
   <div class="row">
     <div class="col-md-8" *ngIf="story">
 
-      <div class="blog-post-section">
-        <!--<div class="blog-post-img">
-          <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
-        </div>-->
+      <div class="blog-post-section">      
         <div class="blog-post-header">
           <h3><a href="" class="hover-color">{{story.title}}</a></h3>
         </div>
@@ -24,9 +21,7 @@
         <div class="col-md-12">
           <div class="post-comment-wrapper clearfix">
             <h3>Comment ({{story.comments.length}})</h3>
-            <div class="comment-box clearfix" *ngFor="let comment of story.comments">
-              <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
-
+            <div class="comment-box clearfix" *ngFor="let comment of story.comments">              
               <span>by {{comment.author.name}} | <a href="#" class="hover-color">Reply</a></span>
               <p>
                 {{comment.body}}
