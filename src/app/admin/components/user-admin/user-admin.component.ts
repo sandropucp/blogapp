@@ -17,6 +17,7 @@ export class UserAdminComponent implements OnInit {
   updateFailed: boolean;
   nameCtrl: FormControl;
   birthYearCtrl: FormControl;
+  mobileNumberCtrl: FormControl;
   userForm: FormGroup;
 
   static validYear(control: FormControl) {
@@ -41,10 +42,14 @@ export class UserAdminComponent implements OnInit {
       Validators.required,
       UserAdminComponent.validYear
     ]));
+    this.mobileNumberCtrl = this.fb.control('');
+
     this.userForm = this.fb.group({
       name: this.nameCtrl,
-      birthYear: this.birthYearCtrl
+      birthYear: this.birthYearCtrl,
+      mobileNumber: this.mobileNumberCtrl
     });
+    
 
     this.userService.getUser(id)
       .subscribe(user => {
@@ -52,7 +57,7 @@ export class UserAdminComponent implements OnInit {
         this.user = user;
         this.nameCtrl.setValue(this.user.name);
         this.birthYearCtrl.setValue(this.user.birthYear);
-
+        this.mobileNumberCtrl.setValue(this.user.mobileNumber);
       });
   }
 
@@ -62,11 +67,11 @@ export class UserAdminComponent implements OnInit {
     this.userService.updateUser(
       id,
       this.userForm.value.name,
-      this.userForm.value.birthYear
+      this.userForm.value.birthYear,
+      this.userForm.value.mobileNumber
     ).subscribe(
       () => this.router.navigate(['/admin/users']),
       () => this.updateFailed = true
       );
   }
-
 }

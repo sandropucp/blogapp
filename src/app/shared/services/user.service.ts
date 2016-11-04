@@ -54,8 +54,8 @@ export class UserService {
     window.localStorage.removeItem('rememberMe');
   }
 
-  updateUser(id,name,birthYear) {
-   const body = { name, birthYear };
+  updateUser(id,name,birthYear, mobileNumber) {
+   const body = { name, birthYear, mobileNumber };
     return this.http.put(`users/${id}`, body);
   }
 }
