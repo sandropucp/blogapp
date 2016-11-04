@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { StoriesComponent } from './components/stories/stories.component';
@@ -12,6 +12,7 @@ import { homeRouting } from './home.route';
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         homeRouting
     ],
     declarations: [       

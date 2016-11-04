@@ -12,12 +12,15 @@ import { LoginComponent } from './login/login.component';
 import { NavMainComponent } from './shared/components/nav-main/nav-main.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
+import { HttpService } from './shared/services/http.service';
 import { StoryService } from './shared/services/story.service';
 import { UserService } from './shared/services/user.service';
 
 import { HomeModule } from './home/home.module';
 import { AdminModule } from './admin/admin.module';
 import { SignupComponent } from './signup/signup.component';
+
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,10 +38,11 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     HttpModule,
     routing,
+    MaterialModule.forRoot(),
     HomeModule,
     AdminModule
   ],
-  providers: [StoryService, UserService],
+  providers: [HttpService, StoryService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

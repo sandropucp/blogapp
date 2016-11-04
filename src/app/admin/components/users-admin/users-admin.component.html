@@ -17,7 +17,7 @@
           </h4>
         </td>
         <td class="td-edit">
-          <a href="#" class="edit"><i class="ion-edit"></i> Edit</a>
+          <a [routerLink]="['/admin/users', user._id]" class="edit"><i class="ion-edit"></i> Edit</a>
         </td>
         <td class="td-price">
           <div class="price">{{user.email}}</div>

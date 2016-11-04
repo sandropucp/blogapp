@@ -6,6 +6,7 @@ import { SidenavAdminComponent } from './components/sidenav-admin/sidenav-admin.
 
 import { adminRouting } from './admin.route';
 import { UsersAdminComponent } from './components/users-admin/users-admin.component';
+import { UserAdminComponent } from './components/user-admin/user-admin.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import { UsersAdminComponent } from './components/users-admin/users-admin.compon
     ],
     declarations: [
         SidenavAdminComponent,
-        UsersAdminComponent        
+        UsersAdminComponent, UserAdminComponent        
     ],
     exports: [
         SidenavAdminComponent,

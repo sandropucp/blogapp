@@ -1,30 +1,45 @@
 import { Injectable } from '@angular/core';
-
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { StoryModel } from '../models/story.model';
-
-const BASE_URL = 'https://blogapi-express.herokuapp.com/api/';
+import { TagModel } from '../models/tag.model';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class StoryService {
 
-  constructor(private http: Http) { }
-  
-  getStories():Observable<Array<StoryModel>>{
-    return this.http.get(`${BASE_URL}stories`)
-      .map(res => <Array<StoryModel>>res.json());
+  constructor(private http: HttpService) { }
+
+  getStories(): Observable<Array<StoryModel>> {
+    return this.http.get('stories');
   }
 
-  getStoriesByTag(tag:string):Observable<Array<StoryModel>>{
-    return this.http.get(`${BASE_URL}stories?tag=${tag}`)
-      .map(res => <Array<StoryModel>>res.json());
+  getTags(): Observable<Array<TagModel>> {
+    return this.http.get('tags');
   }
 
-  getStory(id:string):Observable<StoryModel>{
-    return this.http.get(`${BASE_URL}stories/${id}`)
-      .map(res => <StoryModel>res.json());
+  getStoriesByTag(tag: string): Observable<Array<StoryModel>> {
+    return this.http.get(`stories?tag=${tag}`);
+  }
+
+  getStory(id: string): Observable<StoryModel> {
+    return this.http.get(`stories/${id}`);
+  }
+
+  search(terms: Observable<string>, debounceMs = 400) {
+    return terms.debounceTime(400)
+      .distinctUntilChanged()
+      .switchMap(term => this.rawsearch(term));
+  }
+
+  rawsearch(term: string) {
+    return this.http.get(`stories?search=${term}`);
+  }
+
+  addComment(storyid, body, author): Observable<StoryModel> {
+    const postBody = { body, author };
+    return this.http.post(`stories/${storyid}/comments`, postBody);
   }
 }
